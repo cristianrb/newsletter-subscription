@@ -1,0 +1,4 @@
+server:
+  port: 8082
+
+subscription-service-url: http://subscription-service:8080

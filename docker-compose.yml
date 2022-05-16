@@ -1,0 +1,37 @@
+version: '2'
+services:
+  mongo:
+    image: mongo
+    ports: 
+      - "27017:27017"
+  elasticmq:
+    image: softwaremill/elasticmq-native
+    ports:
+      - "9324:9324"
+      - "9325:9325"
+    volumes:
+      - "./elasticmq.conf:/opt/elasticmq.conf"
+  public-service:
+    build:
+      context: ./public-service
+    container_name: public-service
+    ports:
+      - 8082:8082
+  subscription-service:
+    build:
+      context: ./subscription-service
+    container_name: subscription-service
+    ports:
+      - 8080:8080
+    depends_on:
+      - elasticmq
+      - mongo
+  email-service:
+    build:
+      context: ./email-service
+    container_name: email-service
+    ports:
+      - 8081:8081
+    depends_on:
+      - elasticmq
+

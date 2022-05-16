@@ -1,0 +1,11 @@
+services:
+  sqs:
+    credentials:
+      access_key: x
+      secret_access_key: x
+      region: elasticmq
+      endpoint: http://localhost:9324
+      uri: http://localhost:9324/000000000000/subscription-queue
+
+server:
+  port: 8081

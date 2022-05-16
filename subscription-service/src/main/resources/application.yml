@@ -1,0 +1,14 @@
+services:
+  sqs:
+    credentials:
+      access_key: x
+      secret_access_key: x
+      region: elasticmq
+      endpoint: http://elasticmq:9324
+      uri: http://elasticmq:9324/000000000000/subscription-queue
+
+spring:
+  data:
+    mongodb:
+      host: mongo
+      port: 27017
